@@ -1,0 +1,6 @@
+.postDesc {
+    border-bottom: 2px solid lightgray;
+    display: flex;
+    align-items: center;
+    padding: 12px
+}
