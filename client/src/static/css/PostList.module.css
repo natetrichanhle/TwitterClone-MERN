@@ -1,6 +1,23 @@
-.postDesc {
+.postContainer {
     border-bottom: 2px solid lightgray;
     display: flex;
     align-items: center;
+    justify-content: space-around;
+}
+
+.postDesc {
+    display: flex;
+    align-items: center;
     padding: 12px
+}
+
+.deleteBtn {
+    width: 32px;
+    cursor: pointer;
+    opacity: 1;
+    transition: 0.25s ease;
+}
+
+.deleteBtn:hover {
+    opacity: 0.6;
 }
