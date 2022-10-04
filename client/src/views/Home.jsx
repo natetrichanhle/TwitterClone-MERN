@@ -12,7 +12,6 @@ import lists from '../static/images/lists.png';
 import profile from '../static/images/profile.png';
 import more from '../static/images/more.png';
 
-
 import Form from '../components/Form';
 import PostList from '../components/PostList';
 
