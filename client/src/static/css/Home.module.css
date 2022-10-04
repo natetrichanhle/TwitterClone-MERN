@@ -1,0 +1,16 @@
+.logo {
+    width: 32px;
+}
+
+.container {
+    column-count: 3;
+    column-gap: 0;
+}
+
+.insideColumn {
+    background-color: whitesmoke;
+}
+
+.outerColumn {
+    background-color: lightgray;
+}
