@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import styles from '../static/css/Home.module.css'
 import logo from '../static/images/twitterlogo.webp'
@@ -11,11 +12,13 @@ import bookmarks from '../static/images/bookmarks.png';
 import lists from '../static/images/lists.png';
 import profile from '../static/images/profile.png';
 import more from '../static/images/more.png';
+import logoutImg from '../static/images/logout.png';
 
 import Form from '../components/Form';
 import PostList from '../components/PostList';
 
-const Home = () => {
+const Home = ({user}) => {
+    const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
@@ -34,6 +37,15 @@ const Home = () => {
                 setPosts([...posts, res.data])
             })
             .catch(err => console.error(err))
+    }
+
+    const logout = () => {
+        axios.get("http://localhost:8000/api/logout", {withCredentials: true})
+            .then(res => {
+                navigate("/");
+                console.log(res.data)
+            })
+            .catch(err => console.log(err))
     }
 
     return (
@@ -69,6 +81,10 @@ const Home = () => {
                         <img src={profile} alt="profile" className={styles.icons}/>
                         <h3>Profile</h3>
                     </a>
+                    <a className={styles.link} onClick={logout}>
+                        <img src={logoutImg} alt="logout" className={styles.icons}/>
+                        <h3>Logout</h3>
+                    </a>
                     <a className={styles.link} href='/more'>
                         <img src={more} alt="more" className={styles.icons}/>
                         <h3>More</h3>
@@ -82,7 +98,7 @@ const Home = () => {
                     onSubmitProp={createPost}
                     initialDescription=''
                 />
-                {loaded && <PostList posts={posts} />}
+                {loaded && <PostList posts={posts} user={user}/>}
             </div>
             <div className={styles.outerColumn}>
                 <input 

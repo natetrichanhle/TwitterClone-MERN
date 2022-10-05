@@ -3,20 +3,25 @@ const cookieParser = require("cookie-parser");
 require('dotenv').config();
 const jwt = require("jsonwebtoken");
 const express = require('express');
-const cors = require('cors');
+const cors = require("cors");
 const app = express();
 
-require('./config/mongoose.config')
+require("./config/mongoose.config")
 
 app.use(cookieSession({
-    name: 'session',
-    keys: ['twitter'],
+    name: "session",
+    keys: ["mora"],
     maxAge: 24 * 60 * 60 * 100
-}))
-app.use(cookieParser())
-app.use(cors());
+}));
+app.use(cookieParser());
+app.use(
+    cors({
+            origin: "http://localhost:3000",
+            methods: "GET,POST,PUT,DELETE",
+            credentials: true
+    }));
 app.use(express.json());
-app.use(express.urlencoded({ extended:true }));
+app.use(express.urlencoded({ extended: true }));
 
 const UserRoutes = require("./routes/user.routes");
 UserRoutes(app);

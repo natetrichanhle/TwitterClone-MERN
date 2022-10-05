@@ -3,6 +3,11 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    transition: 0.25s ease;
+}
+
+.postContainer:hover {
+    background-color: lightgray;
 }
 
 .postDesc {

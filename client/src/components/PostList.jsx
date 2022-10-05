@@ -4,7 +4,7 @@ import axios from 'axios'
 import styles from '../static/css/PostList.module.css'
 import DeletePost from './DeletePost'
 
-const PostList = () => {
+const PostList = ({user}) => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -22,6 +22,7 @@ const PostList = () => {
             {posts.map((post, index) => {
                 return (
                     <div key={index} className={styles.postContainer}>
+                        <h3>{user?.username}</h3>
                         <p className={styles.postDesc}>{post.description}</p>
                         <DeletePost 
                             postId={post._id}
