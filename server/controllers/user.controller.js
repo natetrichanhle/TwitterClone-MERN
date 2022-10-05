@@ -52,3 +52,6 @@ class UserController {
         res.sendStatus(200);
     }
 }
+
+
+module.exports = new UserController();
